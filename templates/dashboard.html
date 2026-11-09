@@ -1,0 +1,122 @@
+{% load static %}
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>DHT11 — Cold Chain Monitoring</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f5f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    .dashboard-card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 650px;
+      padding: 35px 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #4a5568;
+      margin-bottom: 30px;
+    }
+
+    .metrics-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 25px;
+    }
+
+    .metric-card {
+      flex: 1;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 25px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .metric-title {
+      font-size: 14px;
+      color: #a0aec0;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .metric-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: #2d3748;
+    }
+
+    .footer-info {
+      font-size: 13px;
+      color: #a0aec0;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    #refresh {
+      margin-top: 15px;
+      padding: 8px 18px;
+      background-color: #4a5568;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: background 0.2s;
+    }
+
+    #refresh:hover {
+      background-color: #2d3748;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dashboard-card">
+    <h1>Cold Chain Monitoring</h1>
+
+    <div class="metrics-container">
+      <div class="metric-card">
+        <span class="metric-title">Température</span>
+        <div class="metric-value"><span id="temp">--</span> °C</div>
+      </div>
+
+      <div class="metric-card">
+        <span class="metric-title">Humidité</span>
+        <div class="metric-value"><span id="hum">--</span> %</div>
+      </div>
+    </div>
+
+    <div class="footer-info">
+      <p>Dernière mesure : <span id="time">--</span></p>
+      <p id="status">Prêt.</p>
+      <button id="refresh">Rafraîchir</button>
+    </div>
+  </div>
+
+  <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>
